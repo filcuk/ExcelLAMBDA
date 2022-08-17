@@ -1,0 +1,15 @@
+# Purpose: Extract numbers or letters from string
+# Usage: SEPARATE(A1) = numerals, SEPARATE(A1, 1) = letters
+# Source: https://www.reddit.com/r/excel/comments/v37yac/comment/iaywvhp/?utm_source=share&utm_medium=web2x&context=3
+
+=LAMBDA(Cell,[Text],
+LET(
+mid,MID(Cell,SEQUENCE(LEN(Cell)),1),
+midType,ISNUMBER(VALUE(mid)),
+CONCAT(
+IF(ISOMITTED(Text),
+FILTER(mid,midType),
+FILTER(mid,NOT(midType))
+)
+)
+))
