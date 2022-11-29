@@ -3,4 +3,4 @@
 
 =LAMBDA(lookup_value,lookup_array,return_array,LET(
 Row,MAX(IFERROR(SEARCH(lookup_value,lookup_array),0)*(ROW(lookup_array)-MIN(ROW(lookup_array))+1)),
-Out,INDEX(return_array,Row),IF(lookup_value="",NA(),Out)))
+Out,INDEX(return_array,Row),IF(OR(lookup_value="",Row=0),NA(),Row)))
