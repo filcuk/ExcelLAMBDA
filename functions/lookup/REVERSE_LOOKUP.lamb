@@ -1,4 +1,6 @@
 # Purpose: Find partial match in list of values and return value
 # Usage: REVERSE_LOOKUP(lookup_value,lookup_array,return_array)
 
-LAMBDA(lookup_value,lookup_array,return_array,INDEX(return_array,MAX(IFERROR(SEARCH(lookup_value,lookup_array),0)*(ROW(lookup_array)-MIN(ROW(lookup_array))+1))))
+=LAMBDA(lookup_value,lookup_array,return_array,LET(
+Row,MAX(IFERROR(SEARCH(lookup_value,lookup_array),0)*(ROW(lookup_array)-MIN(ROW(lookup_array))+1)),
+Out,INDEX(return_array,Row),IF(lookup_value="",NA(),Out)))
