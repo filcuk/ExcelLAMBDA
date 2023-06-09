@@ -1,0 +1,6 @@
+# Purpose: Return dynamic list, e.g. for Data Validation
+# Usage: DYN_LIST(column,has_header)
+
+=LAMBDA(column,has_header,
+OFFSET(column,has_header,0,COUNTA(column)-has_header)
+)
